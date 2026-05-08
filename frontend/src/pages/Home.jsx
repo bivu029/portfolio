@@ -2,8 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getStoredParticleStyle, getStoredParticleIntensity, getStoredParallaxEnabled, getStoredMotionEnabled, getStoredMotionIntensity } from '../theme'
 import Navbar from '../components/Navbar'
-
-const API = 'http://localhost:8000'
+import { API } from '../api'
 
 function useTyping(phrases) {
   const [text, setText] = useState('')

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { API } from '../../api'
 
-const API = 'http://localhost:8000'
 const token = () => sessionStorage.getItem('admin_token')
 const headers = () => ({ 'Content-Type': 'application/json', Authorization: `Bearer ${token()}` })
 const ratioOptions = ['3 / 4', '16 / 9', '1 / 1', '4 / 3']

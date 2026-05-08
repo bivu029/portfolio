@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { API } from '../../api'
 
-const API = 'http://localhost:8000'
 const headers = () => ({ 'Content-Type': 'application/json', Authorization: `Bearer ${sessionStorage.getItem('admin_token')}` })
 const weightOptions = ['400', '500', '600', '700', '800']
 const styleOptions = ['normal', 'italic']

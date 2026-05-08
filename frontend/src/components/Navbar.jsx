@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { applyTheme, getStoredThemeMode, THEME_MODES } from '../theme'
-
-const API = 'http://localhost:8000'
+import { API } from '../api'
 
 export default function Navbar() {
   const [brand, setBrand] = useState('// portfolio.v1')

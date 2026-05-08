@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './admin.css'
+import { API } from '../api'
 
 export default function AdminLogin() {
   const [form, setForm] = useState({ username: '', password: '' })
@@ -12,7 +13,7 @@ export default function AdminLogin() {
     setLoading(true)
     setError('')
     try {
-      const res = await fetch('http://localhost:8000/admin/login', {
+      const res = await fetch(`${API}/admin/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)

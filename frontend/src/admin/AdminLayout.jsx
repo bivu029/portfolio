@@ -1,6 +1,7 @@
 import './admin.css'
 import { NavLink, useNavigate, Outlet } from 'react-router-dom'
 import { useEffect } from 'react'
+import { API } from '../api'
 
 const NAV = [
   { path: '/admin/dashboard', label: '📊 Dashboard' },
@@ -16,7 +17,7 @@ export default function AdminLayout() {
 
   const handleLogout = async () => {
     try {
-      await fetch('http://localhost:8000/admin/logout', {
+      await fetch(`${API}/admin/logout`, {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` }
       })
