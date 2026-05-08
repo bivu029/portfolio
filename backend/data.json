@@ -1,0 +1,457 @@
+{
+  "hero": {
+    "available": false,
+    "availability_text": "Avilable for opertunity",
+    "name": "Data Analyst &\nFabric Engineer",
+    "subtitle": "I turn complex data into clear decisions. Specialising in Microsoft Fabric, Power BI, and Python-powered analytics — delivering platforms that drive real business outcomes.",
+    "image": "http://localhost:8000/static/images/cd325d26a64846a1bd6f102b82853af3_bivas_pro.png",
+    "typing_phrases": [
+      "Microsoft Fabric Engineer",
+      "Data Analyst & Storyteller",
+      "Python & SQL Specialist",
+      "AI & GenAI Builder",
+      "Alteryx Workflow Designer"
+    ],
+    "nav_title": "Bivas Manna",
+    "nav_title_color": "#1b2236",
+    "nav_title_size": "1.05rem",
+    "nav_title_weight": "700",
+    "nav_title_style": "normal",
+    "hero_title_color": "#0f172a",
+    "hero_title_size": "clamp(3rem, 5vw, 4.5rem)",
+    "hero_title_weight": "700",
+    "hero_title_style": "normal",
+    "hero_subtitle_color": "#4b5563",
+    "hero_subtitle_size": "1.05rem",
+    "hero_subtitle_weight": "400",
+    "hero_subtitle_style": "normal",
+    "typing_color": "#0f172a",
+    "typing_size": "1.3rem",
+    "typing_weight": "500",
+    "typing_style": "normal",
+    "stat_num_color": "#0f172a",
+    "stat_num_size": "2rem",
+    "stat_num_weight": "700",
+    "stat_num_style": "normal",
+    "stat_label_color": "#64748b",
+    "stat_label_size": "0.9rem",
+    "stat_label_weight": "400",
+    "stat_label_style": "normal",
+    "section_title_color": "#20ac30",
+    "section_title_size": "clamp(2rem, 4vw, 2.8rem)",
+    "section_title_weight": "700",
+    "section_title_style": "normal",
+    "stats": [
+      {
+        "num": "4+",
+        "label": "Years Experience"
+      },
+      {
+        "num": "15+",
+        "label": "Projects Delivered"
+      },
+      {
+        "num": "7+",
+        "label": "Tools Mastered"
+      }
+    ],
+    "image_aspect": "3 / 4"
+  },
+  "auth": {
+    "username": "bivu",
+    "password": "Bkpk21057dt8@"
+  },
+  "about": {
+    "paragraphs": [
+      "I'm a Data Analyst and Microsoft Fabric Engineer who turns complex data into clear business impact. I specialize in banking analytics, loan portfolio analysis, FP&A collaboration, accounts receivable, WIP, and utilization optimization.",
+      "With deep expertise in Microsoft Fabric, I design end-to-end data platforms — from ingestion pipelines and Lakehouses to semantic models and reporting layers — so teams can make faster, more confident decisions.",
+      "My delivery combines engineering precision and analytics storytelling, with strong experience in cross-functional teamwork, stakeholder alignment, and automation for repeatable data operations.",
+      "Every project is driven by one goal: make data more trustworthy, accessible, and actionable for the people who need it most."
+    ],
+    "info_cards": [
+      {
+        "icon": "📍",
+        "label": "Location",
+        "value": "Bangalore, India"
+      },
+      {
+        "icon": "🎓",
+        "label": "Education",
+        "value": "MSc in Mathematics"
+      },
+      {
+        "icon": "🏢",
+        "label": "Current Role",
+        "value": "Data Analyst"
+      },
+      {
+        "icon": "🏅",
+        "label": "Certifications",
+        "value": "DP-700, Alteryx Core"
+      }
+    ],
+    "section_title_color": "#0f172a",
+    "section_title_size": "clamp(2rem, 4vw, 2.8rem)",
+    "section_title_weight": "700",
+    "section_title_style": "normal",
+    "paragraph_color": "#475569",
+    "paragraph_size": "1rem",
+    "paragraph_weight": "400",
+    "paragraph_style": "normal",
+    "card_label_color": "#64748b",
+    "card_value_color": "#0f172a",
+    "card_icon_color": "#0f172a"
+  },
+  "skills_style": {
+    "section_title_color": "#0f172a",
+    "section_title_size": "clamp(2rem, 4vw, 2.8rem)",
+    "section_title_weight": "700",
+    "section_title_style": "normal",
+    "card_category_color": "#3f72af",
+    "card_name_color": "#0f172a",
+    "card_desc_color": "#475569",
+    "card_pct_color": "#0f172a",
+    "card_tag_color": "#0f172a"
+  },
+  "projects_style": {
+    "section_title_color": "#0f172a",
+    "section_title_size": "clamp(2rem, 4vw, 2.8rem)",
+    "section_title_weight": "700",
+    "section_title_style": "normal",
+    "card_num_color": "#3f72af",
+    "card_name_color": "#0f172a",
+    "card_desc_color": "#475569",
+    "card_stack_color": "#0f172a"
+  },
+  "skills": [
+    {
+      "id": "1",
+      "category": "Core Platform",
+      "name": "Microsoft Fabric",
+      "desc": "End-to-end data platform engineering — Lakehouses, Data Pipelines, Dataflows Gen2, Semantic Models, Warehouses, and Real-Time Analytics.",
+      "pct": 95,
+      "tags": [
+        "OneLake",
+        "Lakehouse",
+        "Warehouse",
+        "Pipelines",
+        "Dataflows",
+        "Power BI"
+      ]
+    },
+    {
+      "id": "2",
+      "category": "Query Language",
+      "name": "SQL",
+      "desc": "Advanced query design, performance optimization, complex joins, window functions, CTEs, and stored procedures across multiple database engines.",
+      "pct": 92,
+      "tags": [
+        "T-SQL",
+        "Spark SQL",
+        "DAX",
+        "Query Optimization"
+      ]
+    },
+    {
+      "id": "3",
+      "category": "Programming",
+      "name": "Python",
+      "desc": "Data wrangling with Pandas, statistical analysis, machine learning pipelines, automation scripts, and PySpark for distributed processing.",
+      "pct": 88,
+      "tags": [
+        "Pandas",
+        "PySpark",
+        "Scikit-learn",
+        "Matplotlib",
+        "FastAPI"
+      ]
+    },
+    {
+      "id": "4",
+      "category": "ETL / Automation",
+      "name": "Alteryx",
+      "desc": "Visual workflow design for data blending, transformation, spatial analytics, and automated reporting pipelines without heavy coding overhead.",
+      "pct": 85,
+      "tags": [
+        "Designer",
+        "Server",
+        "Predictive",
+        "Spatial"
+      ]
+    },
+    {
+      "id": "5",
+      "category": "Intelligence",
+      "name": "AI & GenAI",
+      "desc": "Building intelligent data products — LLM integrations, RAG pipelines, Copilot extensibility, prompt engineering, and AI-powered analytics solutions.",
+      "pct": 82,
+      "tags": [
+        "Azure OpenAI",
+        "LangChain",
+        "RAG",
+        "Copilot Studio",
+        "Prompt Eng."
+      ]
+    },
+    {
+      "id": "6",
+      "category": "Visualization",
+      "name": "Power BI",
+      "desc": "Enterprise reporting, DAX measures, semantic model design, Row-Level Security, paginated reports, and Fabric-native Power BI integration.",
+      "pct": 90,
+      "tags": [
+        "DAX",
+        "Semantic Models",
+        "RLS",
+        "Paginated"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": "loan-portfolio",
+      "num": "PROJECT 001",
+      "name": "Loan Portfolio Analytics",
+      "desc": "Delivered advanced loan portfolio reporting and risk analytics to improve portfolio health, tracking delinquencies, exposure, and collections performance.",
+      "stack": [
+        "Power BI",
+        "PYTHON",
+        "SQL",
+        "ALTERYX"
+      ],
+      "overview": "Developed a comprehensive loan portfolio analytics solution.",
+      "problem": "The business lacked consolidated visibility into loan portfolio health.",
+      "data": "~2.5 million loan records, 20+ tables.",
+      "architecture": "Source systems → Fabric lakehouse → Semantic model → Power BI.",
+      "approach": [
+        "Consolidated loan data into a Fabric lakehouse.",
+        "Built risk-tiered KPIs for delinquency and collections.",
+        "Created interactive executive dashboards.",
+        "Automated monthly refresh routines."
+      ],
+      "insights": [
+        "High-risk customers concentrated in small segments.",
+        "Delinquencies increased in specific credit score ranges.",
+        "Manual reporting replaced by automated monthly review."
+      ],
+      "impact": "Reduced manual reporting effort by 70%.",
+      "tools": "Microsoft Fabric, Power BI, SQL, Dataflows",
+      "slider_active": false,
+      "slider_images": [],
+      "live_link_active": false,
+      "live_link": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80",
+      "slider_aspect": "16 / 9"
+    },
+    {
+      "id": "credit-card",
+      "num": "PROJECT 002",
+      "name": "Credit Card Analytics",
+      "desc": "Built credit card spend and risk dashboards that surfaced customer behavior, approval trends, and loss forecasts for sharper credit decisioning.",
+      "stack": [
+        "Fabric",
+        "Power BI",
+        "SQL",
+        "Analytics"
+      ],
+      "overview": "Created analytics to uncover credit card trends and risk signals.",
+      "problem": "Credit card teams lacked a unified view of spend behavior and approvals.",
+      "data": "~1.8 million transactions, 15+ tables.",
+      "architecture": "Source → Fabric pipelines → Analytics layer → Power BI.",
+      "approach": [
+        "Aggregated card transaction data into a central Fabric lakehouse.",
+        "Built KPIs for spend, churn, and approval performance.",
+        "Created Power BI dashboards with segmentation filters."
+      ],
+      "insights": [
+        "Approval rates varied by segment and geography.",
+        "High-risk behavior surfaced in select product categories."
+      ],
+      "impact": "Enabled faster credit decisioning.",
+      "tools": "Microsoft Fabric, Power BI, SQL, Alteryx"
+    },
+    {
+      "id": "employee-utilisation",
+      "num": "PROJECT 003",
+      "name": "Employee Utilisation Optimization",
+      "desc": "Designed utilization dashboards and WIP metrics for HR and finance, helping managers balance capacity, project staffing, and productivity.",
+      "stack": [
+        "Power BI",
+        "Fabric",
+        "Alteryx",
+        "Reporting"
+      ],
+      "overview": "Delivered utilization dashboards and WIP tracking.",
+      "problem": "Teams had limited visibility into employee workload and utilization.",
+      "data": "~450k records, 10 tables.",
+      "architecture": "Assignment + time data in Fabric → dashboards.",
+      "approach": [
+        "Integrated time, project, and resource data.",
+        "Built utilization and WIP measures.",
+        "Designed dashboards highlighting capacity gaps."
+      ],
+      "insights": [
+        "Some teams over-utilized while others had surplus.",
+        "WIP reporting helped prioritize high-value work."
+      ],
+      "impact": "Improved resource planning.",
+      "tools": "Microsoft Fabric, Power BI, SQL, Alteryx"
+    },
+    {
+      "id": "fabric-delivery",
+      "num": "PROJECT 004",
+      "name": "Fabric Data Platform Delivery",
+      "desc": "Delivered a scalable data platform with Fabric lakehouses, data pipelines, and automated reporting to support finance, operations, and analytics teams.",
+      "stack": [
+        "Fabric",
+        "OneLake",
+        "Power BI",
+        "Automation"
+      ],
+      "overview": "Built a modern Fabric data platform.",
+      "problem": "Legacy platforms were slow and fragmented.",
+      "data": "~3 million records across 25 tables.",
+      "architecture": "Source ingestion → Fabric lakehouses → Semantic models → Power BI.",
+      "approach": [
+        "Designed Fabric landing zone and lakehouse architecture.",
+        "Developed standard semantic models and pipelines.",
+        "Established governance controls."
+      ],
+      "insights": [
+        "Centralized data reduced duplicate reporting.",
+        "Standardized models improved consistency."
+      ],
+      "impact": "Reduced report development time.",
+      "tools": "Microsoft Fabric, Power BI, Dataflows, OneLake"
+    },
+    {
+      "id": "alteryx-automation",
+      "num": "PROJECT 005",
+      "name": "Alteryx Automation Project",
+      "desc": "Built automated Alteryx workflows to transform finance and operations data, eliminating manual tasks and accelerating month-end reporting.",
+      "stack": [
+        "Alteryx",
+        "Automation",
+        "Data Prep",
+        "Reporting"
+      ],
+      "overview": "Automated manual finance workflows using Alteryx.",
+      "problem": "Manual data prep was consuming high effort.",
+      "data": "~80k rows across multiple input files.",
+      "architecture": "Alteryx workflows → cleanse → transform → reporting.",
+      "approach": [
+        "Built reusable Alteryx workflows.",
+        "Automated data validation and enrichment.",
+        "Scheduled workflows to run automatically."
+      ],
+      "insights": [
+        "Automation removed manual data handoffs.",
+        "Standardized workflows reduced prep time."
+      ],
+      "impact": "Cut manual reporting time significantly.",
+      "tools": "Alteryx, SQL, Power BI"
+    },
+    {
+      "id": "fabric-automation",
+      "num": "PROJECT 006",
+      "name": "Fabric Automation Project",
+      "desc": "Automated Fabric pipeline orchestration and deployment to streamline analytics delivery and maintain consistent, governed data flows.",
+      "stack": [
+        "Fabric",
+        "Pipelines",
+        "Automation",
+        "Governance"
+      ],
+      "overview": "Implemented automated Fabric pipelines.",
+      "problem": "Analytics workflows were manual and prone to delays.",
+      "data": "~2 million records.",
+      "architecture": "Fabric pipelines → lakehouse → semantic models → monitoring.",
+      "approach": [
+        "Automated pipeline orchestration.",
+        "Created monitoring and alerting.",
+        "Reduced manual intervention."
+      ],
+      "insights": [
+        "Automation increased pipeline reliability.",
+        "Monitoring enabled faster issue identification."
+      ],
+      "impact": "Improved analytics uptime.",
+      "tools": "Microsoft Fabric, Power BI, Dataflows"
+    }
+  ],
+  "contact": {
+    "email": "bivasmanna4@gmail.com",
+    "description": "Response within 24 hours. Prefer async? Connect on LinkedIn.",
+    "cv_link": "http://localhost:8000/static/cv/13515fe8ae3141aba4c3ab594d25209e_MGO_Weekly_Report_Enhanced.pdf",
+    "phone_numbers": [
+      {
+        "id": "3wc39x95",
+        "label": "Mobile",
+        "number": "+918158962943"
+      }
+    ],
+    "social_links": [
+      {
+        "id": "bw00ly2c",
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/bivas-manna-a42731367?"
+      }
+    ],
+    "section_title_color": "#0f172a",
+    "section_title_size": "clamp(2rem, 4vw, 2.8rem)",
+    "section_title_weight": "700",
+    "section_title_style": "normal",
+    "description_color": "#475569",
+    "description_size": "1.05rem",
+    "description_weight": "400",
+    "description_style": "normal",
+    "email_color": "#0f172a",
+    "email_size": "1.2rem",
+    "email_weight": "600",
+    "email_style": "normal",
+    "phone_label_color": "#64748b",
+    "phone_value_color": "#0f172a",
+    "social_color": "#0f172a"
+  },
+  "analytics": {
+    "page_views": [
+      {
+        "timestamp": "2026-05-08T05:17:19.578337Z",
+        "path": "/",
+        "source": "Internal",
+        "referrer": "http://localhost:5173/"
+      },
+      {
+        "timestamp": "2026-05-08T05:17:57.588680Z",
+        "path": "/",
+        "source": "Direct",
+        "referrer": "http://localhost:5173/"
+      },
+      {
+        "timestamp": "2026-05-08T05:17:57.612319Z",
+        "path": "/",
+        "source": "Internal",
+        "referrer": "http://localhost:5173/"
+      }
+    ],
+    "performance_events": [],
+    "performance": {
+      "status": "needs_improvement",
+      "score": 66,
+      "metrics": {
+        "largest_contentful_paint": 2.5,
+        "total_blocking_time": 152,
+        "cumulative_layout_shift": 0.13
+      },
+      "issues": [
+        "Hero image is large and delays first paint.",
+        "Unused JavaScript is increasing load time.",
+        "Static assets lack caching headers."
+      ],
+      "recommendations": [
+        "Compress hero image and serve WebP.",
+        "Lazy-load non-critical scripts.",
+        "Add cache-control headers for static resources."
+      ]
+    }
+  }
+}
