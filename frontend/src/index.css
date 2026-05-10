@@ -773,3 +773,82 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: cente
   .case-study-section { padding: 1.2rem; }
   .case-study-section ul { padding-left: 1rem; }
 }
+/* ─────────────────────────────────────────────
+   HERO MOBILE LAYOUT FIX
+   Keeps text-left / photo-right on all screen sizes
+   Drop this at the END of your index.css
+   (after the existing @media blocks)
+   ───────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+
+  /* Override the 1fr collapse — keep two columns */
+  .hero-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  /* Scale down the photo so it fits */
+  .hero-photo {
+    max-width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 20px;
+    padding: 0.6rem;
+  }
+
+  /* Keep text left-aligned */
+  .hero-btns {
+    justify-content: flex-start !important;
+  }
+
+  .hero-stats {
+    flex-direction: row !important;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
+
+  .hero-stats > div,
+  .hero-stats .stat-num,
+  .hero-stats .stat-label {
+    text-align: left !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* On very small phones, shrink text a bit */
+  h1.hero-name {
+    font-size: clamp(1.4rem, 7vw, 2rem);
+  }
+
+  .hero-typing-wrap {
+    font-size: 0.78rem;
+  }
+
+  .hero-desc {
+    font-size: 0.85rem;
+  }
+
+  .hero-photo {
+    border-radius: 16px;
+    padding: 0.4rem;
+  }
+
+  .btn {
+    padding: 0.6rem 1.1rem;
+    font-size: 12px;
+  }
+
+  .stat-num {
+    font-size: 1.5rem;
+  }
+
+  .hero-stats {
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+  }
+}
