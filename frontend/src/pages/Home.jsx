@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { getStoredParticleStyle, getStoredParticleIntensity, getStoredParallaxEnabled, getStoredMotionEnabled, getStoredMotionIntensity, getStoredLoadingEffect } from '../theme'
+import { getStoredParticleStyle, getStoredParticleIntensity, getStoredParallaxEnabled, getStoredMotionEnabled, getStoredMotionIntensity } from '../theme'
 import Navbar from '../components/Navbar'
 import { API } from '../api'
 
@@ -37,8 +37,6 @@ export default function Home() {
   const [contact, setContact] = useState(null)
   const [skillsStyle, setSkillsStyle] = useState(null)
   const [projectsStyle, setProjectsStyle] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [loadingEffect] = useState(() => getStoredLoadingEffect())
   const [particleStyle, setParticleStyle] = useState(() => getStoredParticleStyle())
   const [particleIntensity] = useState(() => getStoredParticleIntensity())
   const [parallaxEnabled] = useState(() => getStoredParallaxEnabled())
@@ -51,25 +49,13 @@ export default function Home() {
 
   // Fetch all data from backend
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await Promise.allSettled([
-          fetch(`${API}/api/hero`).then(r => r.json()).then(setHero),
-          fetch(`${API}/api/about`).then(r => r.json()).then(setAbout),
-          fetch(`${API}/api/skills`).then(r => r.json()).then(setSkills),
-          fetch(`${API}/api/projects`).then(r => r.json()).then(setProjects),
-          fetch(`${API}/api/contact`).then(r => r.json()).then(setContact),
-          fetch(`${API}/api/skills-style`).then(r => r.ok ? r.json() : null).then(setSkillsStyle).catch(() => {}),
-          fetch(`${API}/api/projects-style`).then(r => r.ok ? r.json() : null).then(setProjectsStyle).catch(() => {})
-        ])
-      } catch (error) {
-        console.error('Home data load failed', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchData()
+    fetch(`${API}/api/hero`).then(r => r.json()).then(setHero)
+    fetch(`${API}/api/about`).then(r => r.json()).then(setAbout)
+    fetch(`${API}/api/skills`).then(r => r.json()).then(setSkills)
+    fetch(`${API}/api/projects`).then(r => r.json()).then(setProjects)
+    fetch(`${API}/api/contact`).then(r => r.json()).then(setContact)
+    fetch(`${API}/api/skills-style`).then(r => r.ok ? r.json() : null).then(setSkillsStyle).catch(() => {})
+    fetch(`${API}/api/projects-style`).then(r => r.ok ? r.json() : null).then(setProjectsStyle).catch(() => {})
   }, [])
 
   // Particle canvas
@@ -211,104 +197,10 @@ export default function Home() {
     return () => observer.disconnect()
   }, [skills, projects])
 
-  if (loading) {
-    const shimmerBase = {
-      background: 'linear-gradient(90deg, rgba(255,255,255,0.08) 25%, rgba(255,255,255,0.18) 50%, rgba(255,255,255,0.08) 75%)',
-      backgroundSize: '200% 100%',
-      animation: 'shimmer 1.4s infinite'
-    }
-    const pulseBase = {
-      background: 'rgba(255,255,255,0.12)',
-      animation: 'pulse 1.4s infinite'
-    }
-    const staticBase = {
-      background: 'rgba(255,255,255,0.08)'
-    }
-    const heroPhotoSkeleton = loadingEffect === 'shimmer' ? shimmerBase : pulseBase
-    const aboutTagSkeleton = loadingEffect === 'shimmer' ? shimmerBase : pulseBase
-    const aboutBlockSkeleton = loadingEffect === 'shimmer' ? shimmerBase : pulseBase
-
-    return (
-      <>
-        <canvas id="bg-canvas" ref={canvasRef} />
-        <Navbar />
-        <style>{`
-          @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-          }
-          @keyframes pulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-          }
-          @keyframes dotPulse {
-            0%, 100% { transform: translateY(0); opacity: 0.4; }
-            50% { transform: translateY(-5px); opacity: 1; }
-          }
-        `}</style>
-        <section id="hero">
-          <div className="container">
-            <div className="hero-grid">
-              <div className="hero-copy">
-                {loadingEffect === 'pulse' && (
-                  <div style={{ display: 'grid', gap: '1rem' }}>
-                    <div style={{ width: '70%', height: '2rem', borderRadius: '999px', ...pulseBase }} />
-                    <div style={{ width: '100%', height: '1rem', borderRadius: '999px', ...pulseBase }} />
-                    <div style={{ width: '90%', height: '1rem', borderRadius: '999px', ...pulseBase }} />
-                    <div style={{ width: '95%', height: '1rem', borderRadius: '999px', ...pulseBase }} />
-                  </div>
-                )}
-                {loadingEffect === 'dots' && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '1.5rem 0' }}>
-                    {[0, 1, 2].map(index => (
-                      <div key={index} style={{ width: '0.8rem', height: '0.8rem', borderRadius: '999px', background: 'rgba(255,255,255,0.22)', animation: `dotPulse 1.2s ${index * 0.15}s infinite ease-in-out` }} />
-                    ))}
-                  </div>
-                )}
-                {loadingEffect === 'bars' && (
-                  <div style={{ display: 'grid', gap: '0.75rem' }}>
-                    {[75, 55, 90, 65].map((width, i) => (
-                      <div key={i} style={{ width: `${width}%`, height: '0.9rem', borderRadius: '999px', ...shimmerBase }} />
-                    ))}
-                  </div>
-                )}
-                {loadingEffect === 'shimmer' && (
-                  <>
-                    <div style={{ width: '100%', maxWidth: '560px', height: '3.6rem', marginBottom: '1rem', borderRadius: '16px', ...shimmerBase }} />
-                    <div style={{ width: '80%', height: '1rem', marginBottom: '1.25rem', borderRadius: '999px', ...shimmerBase }} />
-                    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
-                      <div style={{ width: '144px', height: '3rem', borderRadius: '999px', ...shimmerBase }} />
-                      <div style={{ width: '144px', height: '3rem', borderRadius: '999px', ...shimmerBase }} />
-                    </div>
-                  </>
-                )}
-                {loadingEffect !== 'shimmer' && (
-                  <div style={{ width: '100%', maxWidth: '560px', height: '3.6rem', marginBottom: '1rem', borderRadius: '16px', ...staticBase }} />
-                )}
-              </div>
-              <div className="hero-photo" style={{ aspectRatio: '3 / 4' }}>
-                <div style={{ width: '100%', height: '100%', borderRadius: '30px', ...heroPhotoSkeleton }} />
-              </div>
-            </div>
-          </div>
-        </section>
-        <section id="about">
-          <div className="container">
-            <div className="section-tag">01 — About</div>
-            <div style={{ width: '45%', height: '3rem', borderRadius: '16px', marginBottom: '1.5rem', ...aboutTagSkeleton }} />
-            <div className="about-grid">
-              <div style={{ width: '100%', minHeight: '200px', borderRadius: '24px', ...aboutBlockSkeleton }} />
-            </div>
-          </div>
-        </section>
-      </>
-    )
-  }
-
   return (
-      <>
-        <canvas id="bg-canvas" ref={canvasRef} />
-        <Navbar />
+    <>
+      <canvas id="bg-canvas" ref={canvasRef} />
+      <Navbar />
 
       {/* ── Hero ── */}
       <section id="hero">

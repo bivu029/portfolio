@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { applyTheme, applyPageTitle, getStoredPageTitle, setStoredPageTitle, getStoredParticleStyle, setStoredParticleStyle, getStoredParticleIntensity, setStoredParticleIntensity, getStoredThemeMode, getStoredLightPalette, getStoredDarkPalette, getStoredParallaxEnabled, getStoredMotionEnabled, getStoredMotionIntensity, getStoredLoadingEffect, setStoredLoadingEffect, setStoredParallaxEnabled, setStoredMotionEnabled, setStoredMotionIntensity, LIGHT_PALETTES, DARK_PALETTES, PARTICLE_STYLES, PARTICLE_INTENSITIES, MOTION_INTENSITIES, LOADING_EFFECTS, THEME_MODES } from '../../theme'
+import { applyTheme, applyPageTitle, getStoredPageTitle, setStoredPageTitle, getStoredParticleStyle, setStoredParticleStyle, getStoredParticleIntensity, setStoredParticleIntensity, getStoredThemeMode, getStoredLightPalette, getStoredDarkPalette, getStoredParallaxEnabled, getStoredMotionEnabled, getStoredMotionIntensity, setStoredParallaxEnabled, setStoredMotionEnabled, setStoredMotionIntensity, LIGHT_PALETTES, DARK_PALETTES, PARTICLE_STYLES, PARTICLE_INTENSITIES, MOTION_INTENSITIES, THEME_MODES } from '../../theme'
 
 export default function DesignThemeAdmin() {
   const navigate = useNavigate()
@@ -13,7 +13,6 @@ export default function DesignThemeAdmin() {
   const [parallaxEnabled, setParallaxEnabled] = useState(getStoredParallaxEnabled())
   const [motionEnabled, setMotionEnabled] = useState(getStoredMotionEnabled())
   const [motionIntensity, setMotionIntensity] = useState(getStoredMotionIntensity())
-  const [loadingEffect, setLoadingEffect] = useState(getStoredLoadingEffect())
 
   useEffect(() => {
     const storedMode = getStoredThemeMode()
@@ -24,7 +23,6 @@ export default function DesignThemeAdmin() {
     const storedParallax = getStoredParallaxEnabled()
     const storedMotion = getStoredMotionEnabled()
     const storedMotionIntensity = getStoredMotionIntensity()
-    const storedLoadingEffect = getStoredLoadingEffect()
     setThemeMode(storedMode)
     setLightPalette(storedLight)
     setDarkPalette(storedDark)
@@ -33,7 +31,6 @@ export default function DesignThemeAdmin() {
     setParallaxEnabled(storedParallax)
     setMotionEnabled(storedMotion)
     setMotionIntensity(storedMotionIntensity)
-    setLoadingEffect(storedLoadingEffect)
     applyTheme(storedMode, storedLight, storedDark)
   }, [])
 
@@ -45,9 +42,8 @@ export default function DesignThemeAdmin() {
     setStoredParallaxEnabled(parallaxEnabled)
     setStoredMotionEnabled(motionEnabled)
     setStoredMotionIntensity(motionIntensity)
-    setStoredLoadingEffect(loadingEffect)
     applyPageTitle()
-    window.alert('Design settings saved. Refresh the home page to see updated motion, loading effect and parallax preferences.')
+    window.alert('Design settings saved. Refresh the home page to see updated motion and parallax preferences.')
   }
 
   return (
@@ -132,15 +128,6 @@ export default function DesignThemeAdmin() {
               ))}
             </select>
             <span className="admin-field-hint">Choose soft or strong motion for the hero and section animations.</span>
-          </div>
-          <div className="admin-field">
-            <label>Loading Animation Style</label>
-            <select value={loadingEffect} onChange={e => setLoadingEffect(e.target.value)}>
-              {LOADING_EFFECTS.map(effect => (
-                <option key={effect} value={effect}>{effect}</option>
-              ))}
-            </select>
-            <span className="admin-field-hint">Choose the loading animation shown while home page content is fetched.</span>
           </div>
         </div>
         <div className="admin-form-actions" style={{ justifyContent: 'flex-end', gap: '0.75rem' }}>
