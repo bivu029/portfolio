@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { applyTheme, getStoredThemeMode, THEME_MODES } from '../theme'
+import { applyPageTitle, applyTheme, getStoredThemeMode, THEME_MODES } from '../theme'
 import { API } from '../api'
 
 export default function Navbar() {
@@ -18,6 +18,18 @@ export default function Navbar() {
   }, [theme])
 
   useEffect(() => {
+    fetch(`${API}/api/theme-settings`)
+      .then(res => res.ok ? res.json() : null)
+      .then(data => {
+        if (!data) return
+        const stored = window.localStorage.getItem('portfolio_theme_mode')
+        const themeMode = stored || data.theme_mode || 'system'
+        setTheme(themeMode)
+        applyTheme(themeMode, data.light_palette, data.dark_palette)
+        applyPageTitle(data.page_title)
+      })
+      .catch(() => {})
+
     if (typeof window === 'undefined') return
     const media = window.matchMedia('(prefers-color-scheme: dark)')
     const update = () => setSystemTheme(media.matches ? 'dark' : 'light')

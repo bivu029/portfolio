@@ -453,5 +453,16 @@
         "Add cache-control headers for static resources."
       ]
     }
+  },
+  "theme_settings": {
+    "theme_mode": "system",
+    "light_palette": "mint",
+    "dark_palette": "emerald",
+    "page_title": "Portfolio",
+    "particle_style": "default",
+    "particle_intensity": "lighter",
+    "parallax_enabled": true,
+    "motion_enabled": true,
+    "motion_intensity": "soft"
   }
 }

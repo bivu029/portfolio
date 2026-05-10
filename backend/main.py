@@ -388,6 +388,35 @@ def update_projects_style(style: dict, token: str = Depends(auth_check)):
     write_data(data)
     return style
 
+# ── Theme Settings ────────────────────────────────────
+
+def get_default_theme_settings():
+    return {
+        "theme_mode": "system",
+        "light_palette": "blue",
+        "dark_palette": "indigo",
+        "page_title": "Portfolio",
+        "particle_style": "default",
+        "particle_intensity": "lighter",
+        "parallax_enabled": True,
+        "motion_enabled": True,
+        "motion_intensity": "soft"
+    }
+
+@app.get("/api/theme-settings")
+def get_theme_settings():
+    data = read_data()
+    theme_settings = data.get("theme_settings", {})
+    defaults = get_default_theme_settings()
+    return {**defaults, **theme_settings}
+
+@app.put("/admin/theme-settings")
+def update_theme_settings(settings: dict, token: str = Depends(auth_check)):
+    data = read_data()
+    data["theme_settings"] = settings
+    write_data(data)
+    return settings
+
 # ── Admin: Skills ─────────────────────────────────────
 @app.get("/admin/skills")
 def admin_get_skills(token: str = Depends(auth_check)):

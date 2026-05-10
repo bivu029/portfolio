@@ -95,11 +95,12 @@ export const setStoredMotionIntensity = (intensity) => {
   window.localStorage.setItem(MOTION_INTENSITY_KEY, safeIntensity)
 }
 
-export const applyPageTitle = () => {
+export const applyPageTitle = (title) => {
   if (typeof document === 'undefined') return
-  const title = getStoredPageTitle()
-  document.title = title
-  return title
+  const finalTitle = title?.trim() || getStoredPageTitle()
+  window.localStorage.setItem(PAGE_TITLE_KEY, finalTitle)
+  document.title = finalTitle
+  return finalTitle
 }
 
 export const applyTheme = (mode, lightPalette, darkPalette) => {

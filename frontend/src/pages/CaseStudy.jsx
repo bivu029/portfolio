@@ -34,7 +34,15 @@ export default function CaseStudy() {
     <>
       <Navbar />
       <section className="container" style={{ padding: '8rem 0' }}>
-        <p style={{ color: 'var(--muted)' }}>Loading...</p>
+        <div className="case-study-loading">
+          <div className="shimmer shimmer-line" style={{ width: '50%', height: '2.5rem', marginBottom: '1rem' }} />
+          <div className="shimmer shimmer-line" style={{ width: '100%', height: '1rem', marginBottom: '0.75rem' }} />
+          <div className="shimmer shimmer-line" style={{ width: '95%', height: '1rem', marginBottom: '0.75rem' }} />
+          <div className="shimmer shimmer-box" style={{ width: '100%', height: '16rem', margin: '1.5rem 0' }} />
+          <div className="shimmer shimmer-line" style={{ width: '60%', height: '1rem', marginBottom: '0.75rem' }} />
+          <div className="shimmer shimmer-line" style={{ width: '80%', height: '1rem', marginBottom: '0.75rem' }} />
+          <div className="shimmer shimmer-line" style={{ width: '70%', height: '1rem' }} />
+        </div>
       </section>
     </>
   )

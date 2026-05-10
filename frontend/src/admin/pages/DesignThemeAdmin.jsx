@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { applyTheme, applyPageTitle, getStoredPageTitle, setStoredPageTitle, getStoredParticleStyle, setStoredParticleStyle, getStoredParticleIntensity, setStoredParticleIntensity, getStoredThemeMode, getStoredLightPalette, getStoredDarkPalette, getStoredParallaxEnabled, getStoredMotionEnabled, getStoredMotionIntensity, setStoredParallaxEnabled, setStoredMotionEnabled, setStoredMotionIntensity, LIGHT_PALETTES, DARK_PALETTES, PARTICLE_STYLES, PARTICLE_INTENSITIES, MOTION_INTENSITIES, THEME_MODES } from '../../theme'
+import { API } from '../../api'
+
+const headers = () => ({
+  'Content-Type': 'application/json',
+  Authorization: `Bearer ${sessionStorage.getItem('admin_token')}`
+})
 
 export default function DesignThemeAdmin() {
   const navigate = useNavigate()
@@ -23,18 +29,57 @@ export default function DesignThemeAdmin() {
     const storedParallax = getStoredParallaxEnabled()
     const storedMotion = getStoredMotionEnabled()
     const storedMotionIntensity = getStoredMotionIntensity()
-    setThemeMode(storedMode)
-    setLightPalette(storedLight)
-    setDarkPalette(storedDark)
-    setParticleStyle(storedParticles)
-    setParticleIntensity(storedParticleIntensity)
-    setParallaxEnabled(storedParallax)
-    setMotionEnabled(storedMotion)
-    setMotionIntensity(storedMotionIntensity)
-    applyTheme(storedMode, storedLight, storedDark)
+
+    const applyDefaults = (themeData) => {
+      setThemeMode(themeData.theme_mode || storedMode)
+      setLightPalette(themeData.light_palette || storedLight)
+      setDarkPalette(themeData.dark_palette || storedDark)
+      setParticleStyle(themeData.particle_style || storedParticles)
+      setParticleIntensity(themeData.particle_intensity || storedParticleIntensity)
+      setParallaxEnabled(themeData.parallax_enabled ?? storedParallax)
+      setMotionEnabled(themeData.motion_enabled ?? storedMotion)
+      setMotionIntensity(themeData.motion_intensity || storedMotionIntensity)
+      setPageTitle(themeData.page_title || getStoredPageTitle())
+      applyTheme(themeData.theme_mode || storedMode, themeData.light_palette || storedLight, themeData.dark_palette || storedDark)
+    }
+
+    fetch(`${API}/api/theme-settings`)
+      .then(res => res.ok ? res.json() : null)
+      .then(data => {
+        if (data) {
+          applyDefaults(data)
+        } else {
+          applyDefaults({})
+        }
+      })
+      .catch(() => applyDefaults({}))
   }, [])
 
-  const saveTheme = () => {
+  const saveTheme = async () => {
+    const payload = {
+      theme_mode: themeMode,
+      light_palette: lightPalette,
+      dark_palette: darkPalette,
+      page_title: pageTitle,
+      particle_style: particleStyle,
+      particle_intensity: particleIntensity,
+      parallax_enabled: parallaxEnabled,
+      motion_enabled: motionEnabled,
+      motion_intensity: motionIntensity
+    }
+
+    const res = await fetch(`${API}/admin/theme-settings`, {
+      method: 'PUT',
+      headers: headers(),
+      body: JSON.stringify(payload)
+    })
+
+    if (!res.ok) {
+      const err = await res.text()
+      window.alert(`Save failed: ${err || res.statusText}`)
+      return
+    }
+
     applyTheme(themeMode, lightPalette, darkPalette)
     setStoredPageTitle(pageTitle)
     setStoredParticleStyle(particleStyle)
@@ -42,7 +87,7 @@ export default function DesignThemeAdmin() {
     setStoredParallaxEnabled(parallaxEnabled)
     setStoredMotionEnabled(motionEnabled)
     setStoredMotionIntensity(motionIntensity)
-    applyPageTitle()
+    applyPageTitle(pageTitle)
     window.alert('Design settings saved. Refresh the home page to see updated motion and parallax preferences.')
   }
 
