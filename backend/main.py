@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Depends, Header, UploadFile, File
+from fastapi import FastAPI, HTTPException, Depends, Header, UploadFile, File, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -328,20 +328,22 @@ def update_contact(contact: dict, token: str = Depends(auth_check)):
     return {"message": "Contact updated"}
 
 @app.post("/admin/contact/upload")
-def upload_cv(file: UploadFile = File(...), token: str = Depends(auth_check)):
+def upload_cv(request: Request, file: UploadFile = File(...), token: str = Depends(auth_check)):
     filename = f"{uuid.uuid4().hex}_{os.path.basename(file.filename)}"
     dest = os.path.join(CV_DIR, filename)
     with open(dest, "wb") as out:
         out.write(file.file.read())
-    return {"url": f"http://localhost:8000/static/cv/{filename}"}
+    url = request.url_for('static', path=f'cv/{filename}')
+    return {"url": str(url)}
 
 @app.post("/admin/upload/image")
-def upload_image(file: UploadFile = File(...), token: str = Depends(auth_check)):
+def upload_image(request: Request, file: UploadFile = File(...), token: str = Depends(auth_check)):
     filename = f"{uuid.uuid4().hex}_{os.path.basename(file.filename)}"
     dest = os.path.join(IMAGE_DIR, filename)
     with open(dest, "wb") as out:
         out.write(file.file.read())
-    return {"url": f"http://localhost:8000/static/images/{filename}"}
+    url = request.url_for('static', path=f'images/{filename}')
+    return {"url": str(url)}
 
 @app.get("/api/skills-style")
 def get_skills_style():
