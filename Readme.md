@@ -256,7 +256,7 @@ To fully unlink `portfolio.yourdomain.com`:
 - 🔒 **HTTPS included** — automatic SSL via Let's Encrypt
 - 💸 **100% free** — Northflank free tier + free GitHub CI/CD
 - ⚡ **Auto-deploy** — push to GitHub, site updates automatically
-- 🛡️ **Admin panel** — edit projects, skills, bio without touching code
+- 🛡️ **Admin panel** — edit projects, skills, bio without touching code( user - admin and pass- portfolio123)
 
 ---
 
