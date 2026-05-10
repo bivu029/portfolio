@@ -20,8 +20,6 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-.theme-default {}
-
 .theme-light-blue {
   --bg: radial-gradient(circle at top left, rgba(59,130,246,0.12), transparent 24%),
          radial-gradient(circle at 85% 15%, rgba(59,130,246,0.08), transparent 20%),
@@ -231,6 +229,28 @@ nav {
   transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
+.scroll-top {
+  position: fixed;
+  right: 1rem;
+  bottom: 5.5rem;
+  z-index: 215;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.94);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 18px 40px rgba(15,23,42,0.12);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.scroll-top:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.98);
+}
+
 .theme-toggle-float:hover {
   transform: translateY(-2px);
   background: rgba(255,255,255,0.98);
@@ -291,7 +311,10 @@ nav {
 
 .theme-dark-indigo .theme-toggle-float,
 .theme-dark-emerald .theme-toggle-float,
-.theme-dark-rose .theme-toggle-float {
+.theme-dark-rose .theme-toggle-float,
+.theme-dark-indigo .scroll-top,
+.theme-dark-emerald .scroll-top,
+.theme-dark-rose .scroll-top {
   background: rgba(15,23,42,0.9);
   color: var(--text);
   border-color: rgba(255,255,255,0.14);
@@ -299,7 +322,10 @@ nav {
 
 .theme-dark-indigo .theme-toggle-float:hover,
 .theme-dark-emerald .theme-toggle-float:hover,
-.theme-dark-rose .theme-toggle-float:hover {
+.theme-dark-rose .theme-toggle-float:hover,
+.theme-dark-indigo .scroll-top:hover,
+.theme-dark-emerald .scroll-top:hover,
+.theme-dark-rose .scroll-top:hover {
   background: rgba(15,23,42,0.98);
 }
 
@@ -320,7 +346,9 @@ nav {
   align-items: center;
   justify-content: space-between;
 }
-.nav-logo { font-family: var(--font-mono); font-size: 14px; color: var(--text); letter-spacing: 0.05em; text-decoration: none; }
+.nav-logo { font-family: var(--font-mono); font-size: 14px; color: var(--text); letter-spacing: 0.05em; text-decoration: none; display: inline-block; cursor: pointer; }
+.nav-logo.shimmer { min-width: 8rem; min-height: 1.2rem; border-radius: 999px; cursor: pointer; }
+.nav-logo.shimmer::after { border-radius: 999px; }
 .nav-links { display: flex; gap: 2rem; list-style: none; }
 .nav-links a {
   font-size: 13px;
@@ -363,7 +391,28 @@ h1.hero-name {
   color: var(--dark);
   margin-bottom: 1.25rem;
 }
-.hero-name span { color: var(--accent); }
+
+.hero-name.gradient-text {
+  background-image: linear-gradient(90deg, var(--accent), var(--cyan), var(--text), var(--accent));
+  background-size: 200% 200%;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: gradient-slide 6s ease infinite;
+}
+
+.hero-name-accent {
+  color: var(--accent);
+}
+
+@keyframes gradient-slide {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-name span { color: inherit; }
 
 .hero-typing-wrap {
   font-family: var(--font-mono);
@@ -397,6 +446,7 @@ h1.hero-name {
   transition: transform 0.25s ease;
   will-change: transform;
 }
+
 .hero-photo img {
   width: 100%;
   height: 100%;
@@ -700,14 +750,14 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: cente
   .skills-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .case-study-top { grid-template-columns: 1fr; }
-  #hero { padding-top: 12rem; }
+  #hero { padding-top: 7rem; padding-bottom: 2rem; }
 }
 @media (max-width: 768px) {
   .nav-inner { flex-direction: column; gap: 1rem; }
   .nav-links { flex-wrap: wrap; justify-content: center; }
   .container { padding: 0 2rem; }
-  #hero { padding-top: 14rem; }
-  section { padding-top: 5rem; }
+  #hero { padding-top: 8rem; padding-bottom: 2rem; }
+  section { padding-top: 3rem; }
   .hero-btns { justify-content: center; }
   .case-study-actions { justify-content: center; }
   .hero-stats { flex-direction: column; gap: 1.5rem; align-items: center; justify-content: center; }
@@ -715,6 +765,7 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: cente
   .section-tag,
   .section-title,
   .section-note { padding-left: 0.35rem; }
+  .section-line { margin-left: 0.35rem; }
   .section-title { font-size: clamp(1.8rem, 8vw, 2.3rem); }
   .section-note { max-width: 100%; overflow-wrap: anywhere; word-break: break-word; }
   .case-study-card { padding: 1.75rem 1.5rem; }

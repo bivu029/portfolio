@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { applyPageTitle, applyTheme, getStoredThemeMode, THEME_MODES } from '../theme'
+import { applyPageTitle, applyTheme, getStoredPageTitle, getStoredThemeMode, THEME_MODES } from '../theme'
 import { API } from '../api'
 
 export default function Navbar() {
-  const [brand, setBrand] = useState('// portfolio.v1')
+  const [brand, setBrand] = useState('')
+  const [navLoading, setNavLoading] = useState(true)
   const [style, setStyle] = useState({ color: 'var(--dark)', fontSize: '1.05rem', fontWeight: '700', fontStyle: 'normal' })
   const [theme, setTheme] = useState(() => {
     if (typeof window === 'undefined') return 'system'
@@ -54,16 +55,19 @@ export default function Navbar() {
       .then(data => {
         if (data) {
           const title = (data.nav_title || '').trim() || (data.name ? data.name.split('\n')[0].trim() : '')
-          setBrand(title || '// portfolio.v1')
+          setBrand(title || 'Portfolio')
           setStyle({
             color: 'var(--dark)',
             fontSize: data.nav_title_size || '1.05rem',
             fontWeight: data.nav_title_weight || '700',
             fontStyle: data.nav_title_style || 'normal'
           })
+        } else {
+          setBrand('Portfolio')
         }
       })
-      .catch(() => {})
+      .catch(() => setBrand('Portfolio'))
+      .finally(() => setNavLoading(false))
   }, [])
 
   const toggleTheme = () => {
@@ -79,7 +83,13 @@ export default function Navbar() {
     <>
       <nav>
         <div className="nav-inner">
-          <Link to="/" className="nav-logo" style={style}>{brand}</Link>
+          <Link
+            to="/"
+            className={`nav-logo${navLoading ? ' shimmer shimmer-inline' : ''}`}
+            style={style}
+          >
+            {navLoading ? '\u00a0' : brand}
+          </Link>
           <ul className="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>

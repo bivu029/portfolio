@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Home from './pages/Home'
 import CaseStudy from './pages/CaseStudy'
 import AdminLogin from './admin/AdminLogin'
@@ -63,11 +63,39 @@ function RouteTracker() {
   return null
 }
 
+function ScrollToTopButton() {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setVisible(window.scrollY > 500)
+    }
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  if (!visible) return null
+
+  return (
+    <button
+      type="button"
+      className="scroll-top"
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      aria-label="Scroll to top"
+    >
+      ↑ Top
+    </button>
+  )
+}
+
 export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
       <RouteTracker />
+      <ScrollToTopButton />
       <Routes>
         {/* Public */}
         <Route path="/" element={<Home />} />

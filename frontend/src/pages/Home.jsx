@@ -227,9 +227,9 @@ export default function Home() {
                   {hero.available && (
                     <div className="hero-tag">{hero.availability_text}</div>
                   )}
-                  <h1 className="hero-name" style={{ fontSize: hero.hero_title_size || 'clamp(3rem, 5vw, 4.5rem)', fontWeight: hero.hero_title_weight || '700', fontStyle: hero.hero_title_style || 'normal' }}>
+                  <h1 className="hero-name gradient-text" style={{ fontSize: hero.hero_title_size || 'clamp(3rem, 5vw, 4.5rem)', fontWeight: hero.hero_title_weight || '700', fontStyle: hero.hero_title_style || 'normal' }}>
                     {hero.name?.split('\n').map((line, i, arr) => (
-                      <span key={i}>{i === arr.length - 1 ? <span style={{color:'var(--accent)'}}>{line}</span> : line}<br /></span>
+                      <span key={i}>{i === arr.length - 1 ? <span className="hero-name-accent">{line}</span> : line}<br /></span>
                     ))}
                   </h1>
                   <div className="hero-typing-wrap">
