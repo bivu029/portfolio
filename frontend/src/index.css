@@ -293,10 +293,10 @@ nav {
 }
 
 /* ── Hero ── */
-#hero { min-height: 100vh; display: flex; align-items: center; padding: 4rem 0 3rem; }
+#hero { min-height: 80vh; display: flex; align-items: center; padding: 3rem 0 2rem; }
 .hero-tag {
   font-family: var(--font-mono); font-size: 12px; color: var(--cyan);
-  letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.25rem;
+  letter-spacing: 0.15em; text-transform: uppercase; margin: 1rem 0 1.25rem;
   display: flex; align-items: center; gap: 0.75rem;
 }
 .hero-tag::before { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--cyan); }
@@ -647,13 +647,13 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: cente
   .skills-grid { grid-template-columns: 1fr; }
   .projects-grid { grid-template-columns: 1fr; }
   .case-study-top { grid-template-columns: 1fr; }
-  #hero { padding-top: 12rem; }
+  #hero { padding-top: 5rem; }
 }
 @media (max-width: 768px) {
   .nav-inner { flex-direction: column; gap: 1rem; }
   .nav-links { flex-wrap: wrap; justify-content: center; }
   .container { padding: 0 2rem; }
-  #hero { padding-top: 14rem; }
+  #hero { padding-top: 6rem; }
   section { padding-top: 5rem; }
   .hero-btns { justify-content: center; }
   .case-study-actions { justify-content: center; }

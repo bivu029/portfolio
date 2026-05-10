@@ -7,6 +7,7 @@ const PARTICLE_INTENSITY_KEY = 'portfolio_particle_intensity'
 const PARALLAX_ENABLED_KEY = 'portfolio_parallax_enabled'
 const MOTION_ENABLED_KEY = 'portfolio_motion_enabled'
 const MOTION_INTENSITY_KEY = 'portfolio_motion_intensity'
+const LOADING_EFFECT_KEY = 'portfolio_loading_effect'
 
 export const THEME_MODES = ['system', 'light', 'dark']
 export const LIGHT_PALETTES = ['blue', 'mint', 'lavender']
@@ -14,6 +15,7 @@ export const DARK_PALETTES = ['indigo', 'emerald', 'rose']
 export const PARTICLE_STYLES = ['default', 'glow', 'soft', 'starfield', 'nebula', 'sparkle']
 export const PARTICLE_INTENSITIES = ['very lighter', 'lighter', 'dark']
 export const MOTION_INTENSITIES = ['soft', 'strong']
+export const LOADING_EFFECTS = ['shimmer', 'pulse', 'dots', 'bars']
 
 const getStored = (key, fallback) => {
   if (typeof window === 'undefined') return fallback
@@ -94,6 +96,14 @@ export const setStoredMotionIntensity = (intensity) => {
   const safeIntensity = MOTION_INTENSITIES.includes(intensity) ? intensity : 'soft'
   window.localStorage.setItem(MOTION_INTENSITY_KEY, safeIntensity)
 }
+
+export const setStoredLoadingEffect = (effect) => {
+  if (typeof window === 'undefined') return
+  const safeEffect = LOADING_EFFECTS.includes(effect) ? effect : 'shimmer'
+  window.localStorage.setItem(LOADING_EFFECT_KEY, safeEffect)
+}
+
+export const getStoredLoadingEffect = () => getStored(LOADING_EFFECT_KEY, 'shimmer')
 
 export const applyPageTitle = () => {
   if (typeof document === 'undefined') return
