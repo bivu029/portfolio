@@ -773,3 +773,17 @@ footer { border-top: 1px solid var(--border); padding: 2rem 0; text-align: cente
   .case-study-section { padding: 1.2rem; }
   .case-study-section ul { padding-left: 1rem; }
 }
+/* ─────────────────────────────────────────────
+   Fix hero spacing when "Request Desktop Site"
+   is used on mobile (viewport forced to 1100px).
+   Does NOT affect normal mobile layout.
+   Paste at the END of index.css.
+   ───────────────────────────────────────────── */
+
+@media (min-width: 860px) {
+  #hero {
+    min-height: auto;
+    padding-top: calc(80px + 2rem);
+    padding-bottom: 2rem;
+  }
+}
