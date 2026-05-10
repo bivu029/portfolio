@@ -207,9 +207,10 @@ export default function Home() {
         }
       })
     }, { threshold: 0.15 })
+
     document.querySelectorAll('.fade-in, .motion-item').forEach(el => observer.observe(el))
     return () => observer.disconnect()
-  }, [skills, projects])
+  }, [hero, about, skills, projects, contact, motionEnabled])
 
   return (
     <>
