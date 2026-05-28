@@ -222,7 +222,7 @@
       "overview": "Developed a comprehensive loan portfolio analytics solution.",
       "problem": "The business lacked consolidated visibility into loan portfolio health.",
       "data": "~2.5 million loan records, 20+ tables.",
-      "architecture": "Source systems → Fabric lakehouse → Semantic model → Power BI.",
+      "architecture": "Source systems → Alteryx → Semantic model → Power BI.",
       "approach": [
         "Consolidated loan data into a Fabric lakehouse.",
         "Built risk-tiered KPIs for delinquency and collections.",
@@ -235,7 +235,7 @@
         "Manual reporting replaced by automated monthly review."
       ],
       "impact": "Reduced manual reporting effort by 70%.",
-      "tools": "Microsoft Fabric, Power BI, SQL, Dataflows",
+      "tools": "Alteryx, Power BI, SQL, Dataflows",
       "slider_active": false,
       "slider_images": [],
       "live_link_active": false,
