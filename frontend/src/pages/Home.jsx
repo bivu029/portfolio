@@ -47,7 +47,6 @@ export default function Home() {
   const phoneNumbers = (contact?.phone_numbers || []).filter(phone => phone?.number?.trim())
   const socialLinks = (contact?.social_links || []).filter(link => link?.url?.trim())
 
-  // Fetch all data from backend
   useEffect(() => {
     fetch(`${API}/api/hero`).then(r => r.json()).then(setHero)
     fetch(`${API}/api/about`).then(r => r.json()).then(setAbout)
@@ -72,7 +71,6 @@ export default function Home() {
       .catch(() => {})
   }, [])
 
-  // Particle canvas
   useEffect(() => {
     const canvas = canvasRef.current
     const ctx = canvas.getContext('2d')
@@ -173,7 +171,6 @@ export default function Home() {
     return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', resize) }
   }, [particleStyle, particleIntensity])
 
-  // Hero parallax motion
   useEffect(() => {
     if (!parallaxEnabled) return
     const heroPhoto = heroPhotoRef.current
@@ -195,7 +192,6 @@ export default function Home() {
     }
   }, [parallaxEnabled, motionIntensity])
 
-  // Scroll fade-in observer
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => {
@@ -217,7 +213,6 @@ export default function Home() {
       <canvas id="bg-canvas" ref={canvasRef} />
       <Navbar />
 
-      {/* ── Hero ── */}
       <section id="hero">
         <div className="container">
           <div className="hero-grid">
@@ -284,7 +279,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── About ── */}
       <section id="about">
         <div className="container">
           <div className="section-tag">01 — About</div>
@@ -326,7 +320,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Skills ── */}
       <section id="skills">
         <div className="container">
           <div className="section-tag">02 — Skills</div>
@@ -362,7 +355,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Projects ── */}
       <section id="projects">
         <div className="container">
           <div className="section-tag">03 — Projects</div>
@@ -374,23 +366,22 @@ export default function Home() {
                 <div key={i} className="project-card shimmer" style={{ minHeight: '14rem' }} />
               ))
             ) : (
-              projects.map((proj, i) => (
-                <Link key={proj.id || i} to={`/project/${proj.id}`} className={`project-card fade-in${i > 0 ? ` fade-in-delay-${Math.min(i,3)}` : ''}${motionEnabled ? ' motion-item motion-up' : ''}`}>
-                  <div className="project-num">{proj.num}</div>
-                  <div className="project-name">{proj.name}</div>
-                  <p className="project-desc">{proj.desc}</p>
+              projects.map((p, i) => (
+                <div key={p.id} className={`project-card fade-in${i > 0 ? ` fade-in-delay-${Math.min(i, 3)}` : ''}${motionEnabled ? ' motion-item motion-up' : ''}`}>
+                  <div className="project-num">{p.num}</div>
+                  <div className="project-name">{p.name}</div>
+                  <p className="project-desc">{p.desc}</p>
                   <div className="project-stack">
-                    {(proj.stack || []).map((s, j) => <span key={j} className="stack-tag">{s}</span>)}
+                    {(p.stack || []).map((s, j) => <span key={j} className="stack-tag">{s}</span>)}
                   </div>
-                  <div className="project-link">View Case Study →</div>
-                </Link>
+                  <Link to={`/project/${p.id}`} className="project-link">View Case Study →</Link>
+                </div>
               ))
             )}
           </div>
         </div>
       </section>
 
-      {/* ── Contact ── */}
       <section id="contact">
         <div className="container">
           <div className="section-tag">04 — Contact</div>
