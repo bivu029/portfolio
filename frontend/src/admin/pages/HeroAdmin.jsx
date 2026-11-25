@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { API } from '../../api'
+import { API, resolveAssetUrl } from '../../api'
 
 const token = () => sessionStorage.getItem('admin_token')
 const headers = () => ({ 'Content-Type': 'application/json', Authorization: `Bearer ${token()}` })
@@ -91,7 +91,6 @@ export default function HeroAdmin() {
         </div>
       </div>
 
-      {/* Availability */}
       <div className="admin-card">
         <h3 className="admin-card-title">Availability Status</h3>
         <div className="admin-toggle-row">
@@ -127,13 +126,12 @@ export default function HeroAdmin() {
         </div>
         {data.image && (
           <div className="admin-image-preview" style={{ aspectRatio: data.image_aspect || '3 / 4' }}>
-            <img src={data.image} alt="Hero preview" />
+            <img src={resolveAssetUrl(data.image)} alt="Hero preview" />
             <button className="admin-btn-danger-sm" style={{ position: 'absolute', top: '1rem', right: '1rem' }} onClick={() => setData({ ...data, image: '', image_aspect: '3 / 4' })}>Delete</button>
           </div>
         )}
       </div>
 
-      {/* Name / Headline */}
       <div className="admin-card">
         <h3 className="admin-card-title">Visual Style</h3>
         <p className="admin-card-desc">Customize colors, font sizes, and styles for the navbar, hero text, and section headings.</p>
@@ -234,7 +232,6 @@ export default function HeroAdmin() {
         </div>
       </div>
 
-      {/* Typing phrases */}
       <div className="admin-card">
         <h3 className="admin-card-title">Typing Phrases</h3>
         <p className="admin-card-desc">These rotate in the animated typing effect on the hero.</p>
@@ -247,7 +244,6 @@ export default function HeroAdmin() {
         <button className="admin-btn-ghost" onClick={addPhrase}>+ Add Phrase</button>
       </div>
 
-      {/* Stats */}
       <div className="admin-card">
         <h3 className="admin-card-title">Stats (Bottom of Hero)</h3>
         <div className="admin-stats-grid">
