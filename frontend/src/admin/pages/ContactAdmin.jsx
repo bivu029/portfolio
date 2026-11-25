@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { API } from '../../api'
+import { API, resolveAssetUrl } from '../../api'
 
 const token = () => sessionStorage.getItem('admin_token')
 const headers = () => {
@@ -158,7 +158,7 @@ export default function ContactAdmin() {
         {contact.cv_link && (
           <div className="admin-field" style={{ marginTop: '0.5rem', gap: '0.75rem', flexWrap: 'wrap' }}>
             <label>Current CV</label>
-            <a href={contact.cv_link} target="_blank" rel="noreferrer">Download current CV</a>
+            <a href={resolveAssetUrl(contact.cv_link)} target="_blank" rel="noreferrer">Download current CV</a>
             <button className="admin-btn-danger-sm" onClick={() => setContact({ ...contact, cv_link: '' })}>Delete CV</button>
           </div>
         )}
